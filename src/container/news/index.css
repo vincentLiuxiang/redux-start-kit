@@ -1,0 +1,21 @@
+.layout-level-top,
+.layout-level-middle,
+.layout-level-foot {
+  margin: 0 0 10px 10px;
+}
+
+div > button {
+  margin-right: 10px;
+  font-size: 14px !important;
+}
+
+.layout-level-middle ul,
+.layout-level-foot ul {
+  margin-left: 30px;
+  font-size: 14px;
+}
+
+.layout-level-middle ul a,
+.layout-level-foot ul a {
+  text-decoration: underline;
+}
