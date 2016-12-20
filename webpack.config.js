@@ -47,7 +47,7 @@ var webpackConfig = {
 };
 
 
-var exportConfig = function (mode) {
+var exportConfig = function(mode) {
   switch(mode){
     case 'hot':
       webpackConfig.devtool = 'cheap-eval-source-map';
@@ -76,7 +76,7 @@ var exportConfig = function (mode) {
 }
 
 //webpack --mode release
-if(compileMode === 'release'){
+if (compileMode === 'release') {
   exportConfig = exportConfig('product');
 }
 
