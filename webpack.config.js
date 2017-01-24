@@ -57,6 +57,7 @@ var exportConfig = function(mode) {
         if (prop !== 'workerclient' && prop !== 'workerserver') {
           var entryItem = webpackConfig.entry[prop];
           entryItem.push('webpack-hot-middleware/client');
+          webpackConfig.entry[prop] = ['babel-polyfill', ...entryItem];
         }
       }
     break;
