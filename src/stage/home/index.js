@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'; // 不需要，仅作对比使用
 import { createStore, applyMiddleware, compose} from 'redux'
 import rootReducer from './reducer'
 import {asyncMiddleWare} from '../../middleware/async-middleware';
+import asyncFunc from '../../middleware/asyncFunc';
 import App from './app';
 
 function configureStore(initialState) {
@@ -13,7 +14,7 @@ function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(asyncMiddleWare),
+      applyMiddleware(asyncMiddleWare(asyncFunc)),
       // applyMiddleware(thunk),
       module.hot ? tools : f => f
     )
