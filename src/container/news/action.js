@@ -5,13 +5,16 @@ import * as TIPS from '../tips/constant.js'
 import {fetchSuccess} from '../../common/js/request.js'
 
 export function refresh1 () {
-  return {
-    type: types.REFRESH_FIRST,
-    url: '/mock/getFirstNews.json',
-    error: {
-      type: TIPS.TIPS_MESSAGE_STAGE,
-      msgType: 'warning',  // antd message
-      text: '新闻一加载失败' //当后台没有错误信息时，使用该信息；
+  return (getState) => {
+    console.log("@@@@",getState());
+    return {
+      type: types.REFRESH_FIRST,
+      url: '/mock/getFirstNews.json',
+      error: {
+        type: TIPS.TIPS_MESSAGE_STAGE,
+        msgType: 'warning',  // antd message
+        text: '新闻一加载失败' //当后台没有错误信息时，使用该信息；
+      }
     }
   }
 }
@@ -23,13 +26,16 @@ export function clear1 () {
 }
 
 export function refresh2 () {
-  return {
-    type: types.REFRESH_SECOND,
-    url: '/mock/getSecondNews.json',
-    error: {
-      type: TIPS.TIPS_MESSAGE_STAGE,
-      msgType: 'warning',  // antd message
-      text: '新闻二加载失败' //当后台没有错误信息时，使用该信息；
+  return (getState) => {
+    console.log("@@@@2222",getState());    
+    return {
+      type: types.REFRESH_SECOND,
+      url: '/mock/getSecondNews.json',
+      error: {
+        type: TIPS.TIPS_MESSAGE_STAGE,
+        msgType: 'warning',  // antd message
+        text: '新闻二加载失败' //当后台没有错误信息时，使用该信息；
+      }
     }
   }
 }
@@ -52,7 +58,7 @@ export function clear2 () {
 
 // thunk-redux这个丑陋的中间件用法
 export function refreshAllDispatch () {
-  return (dispatch,getState) => {
+  return (dispatch, getState) => {
     dispatch(loadMessage({msgType:'loading',text:'正在加载数据'}));
     let act1 = refresh1();
     let act2 = refresh2();
