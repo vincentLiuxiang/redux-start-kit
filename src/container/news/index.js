@@ -27,7 +27,14 @@ class App extends Component{
     return (
       <div>
         <div className='layout-level-top'>
-          <Fresh onClick={(e) => {refreshAll();}} text={'所有新闻'}/>
+          <Fresh onClick={async (e) => {
+            try {
+              var a = await refreshAll();
+              console.log("#####all",a);              
+            } catch(e) {
+              console.log("@@@@", e.type);
+            }
+          }} text={'所有新闻'}/>
           <Fresh onClick={(e) => {clearAll();}} text={'清除所有'}/>
         </div>
 
@@ -38,7 +45,10 @@ class App extends Component{
         </div>
 
         <div className='layout-level-foot'>
-          <Fresh onClick={(e) => {refresh2();}} text={'新闻二'}/>
+          <Fresh onClick={async (e) => {
+            var a = await refresh2();
+            console.log('####@@@',a);
+          }} text={'新闻二'}/>
           <Fresh onClick={(e) => {clear2();}} text={'清除新闻二'}/>
           <News news={secNews}/>
         </div>
